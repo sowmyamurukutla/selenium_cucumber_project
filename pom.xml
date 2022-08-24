@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>SeleniumWithCucumber</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <jre.level>1.8</jre.level>
+        <jdk.level>1.8</jdk.level>
+        <cucumber-version>7.2.3</cucumber-version>
+    </properties>
+
+
+
+    <build>
+        <plugins>
+            <!-- Compiler plug-in -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${jdk.level}</source>
+                    <target>${jdk.level}</target>
+                </configuration>
+            </plugin>
+
+
+            <!-- Below plug-in is used to execute tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <excludes>
+                        <exclude>none</exclude>
+                    </excludes>
+                    <includes>
+                        <include>**/TestRunner*.java</include>
+                    </includes>
+                    <parallel>methods</parallel>
+                    <threadCount>2</threadCount>
+                    <forkCount>2</forkCount>
+                    <argLine>-XX:+UnlockExperimentalVMOptions -XX:+UnlockExperimentalVMOptions
+                        -XX:+UseG1GC
+                    </argLine>
+                </configuration>
+            </plugin>
+
+            <!-- Below plug-in is used to execute tests -->
+            <!--<plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.0</version>
+                <configuration>
+                    <includes>
+                        <include>**/TestRunner*.java</include>
+                    </includes>
+                    <parallel>methods</parallel>
+                    <threadCount>2</threadCount>
+                    <forkCount>2</forkCount>
+                    <argLine>-XX:+UnlockExperimentalVMOptions -XX:+UnlockExperimentalVMOptions
+                        -XX:+UseG1GC
+                    </argLine>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+            <!-- cucumber jvm report plugin-->
+            <plugin>
+            <groupId>net.masterthought</groupId>
+            <artifactId>maven-cucumber-reporting</artifactId>
+            <version>2.8.0</version>
+            <executions>
+                <execution>
+                    <id>execution</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                    <configuration>
+                        <projectName>SeleniumWithCucumber</projectName>
+                        <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
+                        <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
+        </plugins>
+
+    </build>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber-version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber-version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-jvm</artifactId>
+            <version>${cucumber-version}</version>
+            <type>pom</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.11.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>cucumber-reporting</artifactId>
+            <version>5.7.2</version>
+        </dependency>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>5.0.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber7-adapter</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
+    </dependencies>
+
+
+</project>
