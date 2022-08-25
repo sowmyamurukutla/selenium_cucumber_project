@@ -1,6 +1,7 @@
 @flipKart @Login
 Feature: Login to flipkart and verify title
 
+# Sowmya developed this code and successfullly merged to master
   # this is revali code before sowmya code is merged
   @successLogin
   Scenario: Verify successful login to flipKart
