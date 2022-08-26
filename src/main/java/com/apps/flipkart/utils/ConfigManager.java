@@ -20,7 +20,7 @@ public class ConfigManager {
     }
 
     static {
-        TEST_CONFIG_FILE = System.getProperty("user.dir") + "\\src\\test\\resources\\\\properties\\config.properties";
+        TEST_CONFIG_FILE = System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\config.properties";
         LOGGER = LoggerFactory.getLogger(ConfigManager.class);
         configMap = new HashMap();
     }
