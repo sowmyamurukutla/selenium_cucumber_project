@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.nio.file.Paths;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverManager {
 
@@ -39,7 +40,7 @@ public class DriverManager {
                 System.setProperty("webdriver.gecko.driver", ConfigManager.getConfigProperty("firefox.driver.binary.path"));
                 driver = new FirefoxDriver();
             } else {
-                System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
             }
             driver.manage().window().maximize();
