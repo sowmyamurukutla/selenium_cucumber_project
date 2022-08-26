@@ -36,12 +36,10 @@ public class DriverManager {
             LOGGER.info("Browser : {}", browser);
             WebDriver driver;
             if (browser.equalsIgnoreCase("firefox")) {
-                String driverExe = Paths.get("drivers", ConfigManager.getConfigProperty("firefox.driver.binary.path")).toString();
-                System.setProperty("webdriver.gecko.driver", driverExe);
+                System.setProperty("webdriver.gecko.driver", ConfigManager.getConfigProperty("firefox.driver.binary.path"));
                 driver = new FirefoxDriver();
             } else {
-                String driverExe = Paths.get("drivers", ConfigManager.getConfigProperty("chrome.driver.binary.path")).toString();
-                System.setProperty("webdriver.chrome.driver", driverExe);
+                System.setProperty("webdriver.chrome.driver", "drivers//chromedriver.exe");
                 driver = new ChromeDriver();
             }
             driver.manage().window().maximize();
