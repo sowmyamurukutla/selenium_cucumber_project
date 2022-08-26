@@ -3,7 +3,6 @@
 *.class
 target/
 *.iml
-drivers
 log.txt
 test-output
 reports
