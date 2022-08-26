@@ -6,6 +6,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.file.Paths;
+
 public class DriverManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DriverManager.class);
@@ -34,10 +36,12 @@ public class DriverManager {
             LOGGER.info("Browser : {}", browser);
             WebDriver driver;
             if (browser.equalsIgnoreCase("firefox")) {
-                System.setProperty("webdriver.gecko.driver", ConfigManager.getConfigProperty("firefox.driver.binary.path"));
+                String driverExe = Paths.get("drivers", ConfigManager.getConfigProperty("firefox.driver.binary.path")).toString();
+                System.setProperty("webdriver.gecko.driver", driverExe);
                 driver = new FirefoxDriver();
             } else {
-                System.setProperty("webdriver.chrome.driver", ConfigManager.getConfigProperty("chrome.driver.binary.path"));
+                String driverExe = Paths.get("drivers", ConfigManager.getConfigProperty("chrome.driver.binary.path")).toString();
+                System.setProperty("webdriver.chrome.driver", driverExe);
                 driver = new ChromeDriver();
             }
             driver.manage().window().maximize();
