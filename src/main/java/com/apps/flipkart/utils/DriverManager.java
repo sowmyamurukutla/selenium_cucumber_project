@@ -39,7 +39,7 @@ public class DriverManager {
                 System.setProperty("webdriver.gecko.driver", ConfigManager.getConfigProperty("firefox.driver.binary.path"));
                 driver = new FirefoxDriver();
             } else {
-                System.setProperty("webdriver.chrome.driver", "drivers//chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
                 driver = new ChromeDriver();
             }
             driver.manage().window().maximize();
