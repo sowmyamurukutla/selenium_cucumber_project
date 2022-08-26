@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.FileInputStream;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -20,7 +21,7 @@ public class ConfigManager {
     }
 
     static {
-        TEST_CONFIG_FILE = System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\config.properties";
+        TEST_CONFIG_FILE = Paths.get(System.getProperty("user.dir"), "src", "test", "resources", "properties", "config.properties").toString();
         LOGGER = LoggerFactory.getLogger(ConfigManager.class);
         configMap = new HashMap();
     }
